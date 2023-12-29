@@ -1,0 +1,15 @@
+F:\Sparta\Github\Bak-s\weeks2\weeks2\bin\Debug\net8.0\weeks2.exe
+F:\Sparta\Github\Bak-s\weeks2\weeks2\bin\Debug\net8.0\weeks2.deps.json
+F:\Sparta\Github\Bak-s\weeks2\weeks2\bin\Debug\net8.0\weeks2.runtimeconfig.json
+F:\Sparta\Github\Bak-s\weeks2\weeks2\bin\Debug\net8.0\weeks2.dll
+F:\Sparta\Github\Bak-s\weeks2\weeks2\bin\Debug\net8.0\weeks2.pdb
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.GeneratedMSBuildEditorConfig.editorconfig
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.AssemblyInfoInputs.cache
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.AssemblyInfo.cs
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.csproj.CoreCompileInputs.cache
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.sourcelink.json
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.dll
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\refint\weeks2.dll
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.pdb
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\weeks2.genruntimeconfig.cache
+F:\Sparta\Github\Bak-s\weeks2\weeks2\obj\Debug\net8.0\ref\weeks2.dll

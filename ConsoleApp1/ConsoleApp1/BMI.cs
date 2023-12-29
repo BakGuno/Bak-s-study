@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp1
 {
     internal class BMI
-    {      
+    {
         static void Main()
         {
             //BMI 계산식 : 몸무게/키^2
@@ -27,8 +27,8 @@ namespace ConsoleApp1
                     continue;
                 ok = true;
             }
-            float BMI = mass/ (float)Math.Pow(height/100,2);
-            string bman="";
+            float BMI = mass / (float)Math.Pow(height / 100, 2);
+            string bman = "";
             if (BMI > 0 && 18.5 >= BMI)
                 bman = "저체중";
             else if (BMI > 18.5 && BMI <= 25)
@@ -41,6 +41,7 @@ namespace ConsoleApp1
                 bman = "2단계 비만";
             else bman = "3단계 비만";
             Console.WriteLine($"입력하신 정보의 BMI는 {BMI:N2}이며 현재 {bman}입니다.");
-        }        
+        }
     }
 }
+*/
