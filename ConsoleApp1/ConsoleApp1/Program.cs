@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace ConsoleApp1
 {
@@ -6,46 +7,55 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            //변수 선언, 초기화
-            bool ok = false;
-            int num1 = 0;
-            int num2 = 0;
-            int sum;
-            string[] numbers = new string[2];
+            ////변수 선언, 초기화
+            //bool ok = false;
+            //int num1 = 0;
+            //int num2 = 0;
+            //int sum;
+            //string[] numbers = new string[2];
 
-            while (ok == false) //'숫자'로 '2개'일때만 넘어가도록 /게임에서도 많이쓰는방법 (이중점프관련 isjumping으로 bool타입으로 true면 점프못하게하는방식)
+            //while (ok == false) //'숫자'로 '2개'일때만 넘어가도록 /게임에서도 많이쓰는방법 (이중점프관련 isjumping으로 bool타입으로 true면 점프못하게하는방식)
+            //{
+            //    Console.Write("숫자를 입력해주세요. ex)5 5 :");
+            //    string input = Console.ReadLine();
+            //    numbers = input.Split(' ');
+            //    if (numbers.Length != 2)
+            //        continue;
+            //    bool check1 = int.TryParse(numbers[0], out num1);
+            //    bool check2 = int.TryParse(numbers[1], out num2);
+            //    if (!(check1 && check2))
+            //        continue;
+            //    ok = true;
+            //}
+
+
+            //Console.WriteLine("두 수에 적용할 연산을 선택해주세요. ");
+            //Console.Write("기호로 표시하시면 됩니다. ex)+,-,*,/  : ");
+            //string arith = Console.ReadLine();
+            ////사칙연산 기호에 맞는 것만 판단해서 사용
+            //while (!(arith == "*" || arith == "+" || arith == "-" || arith == "/"))
+            //{
+            //    Console.Write("다시 선택해주세요. : ");
+            //    arith = Console.ReadLine();
+            //}
+            //if (arith == "*")
+            //    sum = num1 * num2;
+            //else if (arith == "+")
+            //    sum = num1 + num2;
+            //else if (arith == "-")
+            //    sum = num1 - num2;
+            //else sum = num1 / num2;
+
+            //Console.WriteLine($"{num1} {arith} {num2} = {sum}");
+            Dictionary<string, int> scores = new Dictionary<string, int>();
+            scores.Add("Alice", 100);
+            scores.Add("Bob", 80);
+            scores.Add("Charlie", 90);
+            scores.Remove("Bob");
+            foreach (KeyValuePair<string, int> pair in scores)
             {
-                Console.Write("숫자를 입력해주세요. ex)5 5 :");
-                string input = Console.ReadLine();
-                numbers = input.Split(' ');
-                if (numbers.Length != 2)
-                    continue;
-                bool check1 = int.TryParse(numbers[0], out num1);
-                bool check2 = int.TryParse(numbers[1], out num2);
-                if (!(check1 && check2))
-                    continue;
-                ok = true;
+                Console.WriteLine(pair.Key + ": " + pair.Value);
             }
-
-
-            Console.WriteLine("두 수에 적용할 연산을 선택해주세요. ");
-            Console.Write("기호로 표시하시면 됩니다. ex)+,-,*,/  : ");
-            string arith = Console.ReadLine();
-            //사칙연산 기호에 맞는 것만 판단해서 사용
-            while (!(arith == "*" || arith == "+" || arith == "-" || arith == "/"))
-            {
-                Console.Write("다시 선택해주세요. : ");
-                arith = Console.ReadLine();
-            }
-            if (arith == "*")
-                sum = num1 * num2;
-            else if (arith == "+")
-                sum = num1 + num2;
-            else if (arith == "-")
-                sum = num1 - num2;
-            else sum = num1 / num2;
-
-            Console.WriteLine($"{num1} {arith} {num2} = {sum}");
         }
     }
 

@@ -4,8 +4,8 @@ namespace weeks2
 {
     internal class Program
     {
-        static void Main(string[] args)
-        {
+        //static void Main(string[] args)
+        //{
             /*//1)홀수와 짝수 구분하기
             Console.Write("숫자를 입력해주세요. : ");
             int num = int.Parse(Console.ReadLine());
@@ -191,61 +191,62 @@ namespace weeks2
             //int sum3 = AddNumbers(10, 20,30);
 
             //Console.WriteLine(sum1+" "+sum2+" "+sum3);
-            CountDown(5);
+            //    CountDown(5);
+            //}
+
+            //static void CountDown(int n)
+            //{
+            //    if (n <= 0)
+            //    {
+            //        Console.WriteLine("Done");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(n);
+            //        CountDown(n - 1);  // 자기 자신을 호출
+            //    }
+            //}
+
+            // 메서드 호출
+
+
+
+            //static int AddNumbers(int a, int b) //매개변수 같고 반환값이 다른건 아무 의미가 없다.
+            //{
+            //    return a + b;
+            //}
+
+            //static float AddNumbers(float a, float b)
+            //{
+            //    return a + b;
+            //}
+
+            //static int AddNumbers(int a, int b, int c) 
+            //{
+            //    return a + b + c;
+            //}
+
+            //static void PrintLine()
+            //{
+            //    for (int i = 0; i < 10; i++) 
+            //    {
+            //        Console.Write("=");
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            //static void PrintLine2(int count)
+            //{
+            //    for (int i = 0; i< count; i++)
+            //    {
+            //        Console.Write("=");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //static int Add(int a, int b)
+            //{
+            //   return a + b;
+            //}
         }
-
-        static void CountDown(int n)
-        {
-            if (n <= 0)
-            {
-                Console.WriteLine("Done");
-            }
-            else
-            {
-                Console.WriteLine(n);
-                CountDown(n - 1);  // 자기 자신을 호출
-            }
-        }
-
-        // 메서드 호출
-        
-
-
-        //static int AddNumbers(int a, int b) //매개변수 같고 반환값이 다른건 아무 의미가 없다.
-        //{
-        //    return a + b;
-        //}
-
-        //static float AddNumbers(float a, float b)
-        //{
-        //    return a + b;
-        //}
-
-        //static int AddNumbers(int a, int b, int c) 
-        //{
-        //    return a + b + c;
-        //}
-
-        //static void PrintLine()
-        //{
-        //    for (int i = 0; i < 10; i++) 
-        //    {
-        //        Console.Write("=");
-        //    }
-        //    Console.WriteLine();
-        //}
-
-        //static void PrintLine2(int count)
-        //{
-        //    for (int i = 0; i< count; i++)
-        //    {
-        //        Console.Write("=");
-        //    }
-        //    Console.WriteLine();
-        //}
-        //static int Add(int a, int b)
-        //{
-        //   return a + b;
-        //}
     }
-}
+
