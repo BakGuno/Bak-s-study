@@ -1,0 +1,15 @@
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\homework1.exe
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\homework1.deps.json
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\homework1.runtimeconfig.json
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\homework1.dll
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\homework1.pdb
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.GeneratedMSBuildEditorConfig.editorconfig
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.AssemblyInfoInputs.cache
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.AssemblyInfo.cs
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.csproj.CoreCompileInputs.cache
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.sourcelink.json
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.dll
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\refint\homework1.dll
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.pdb
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.genruntimeconfig.cache
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\ref\homework1.dll
