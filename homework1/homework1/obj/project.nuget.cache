@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YHhhWbzYMmaRPPKfvXV3hV9e5CKpDZBO1ZqHcmXoBpzIApTys17q8RS7YvOEE1BfQ+kyMfnFZQueV1Z5FxMADQ==",
+  "dgSpecHash": "yTleiYugdyfJJUAYO3ajz2JlLkzpT7MSFy3jwwNQdQRxHgMIKy7ThMmkr7FJF8yTbPazKrKFE9h3UH8KJiqWww==",
   "success": true,
   "projectFilePath": "F:\\Sparta\\Github\\Bak-s\\homework1\\homework1\\homework1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\BakGeonO\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

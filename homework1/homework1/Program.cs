@@ -1,5 +1,17 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Linq;
+using System.Runtime.Serialization;
+using System.IO;
+using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Nodes;
+using System.Text.Json;
+//이리저리 참조하다보니 뭐가 필요없는지 모르겠음.
+
 
 namespace homework1
 {
@@ -7,7 +19,6 @@ namespace homework1
     {
         class Item
         {
-            
             public string type { get; private set; }
             public string name { get; private set; }
             public string jobconfine { get; private set; }
@@ -16,12 +27,13 @@ namespace homework1
             public int price { get; private set; }
             public string explain { get; private set; }
             public int itemcode { get; private set; }
+            public List<Item> shoplist = new List<Item>();            
 
-            public static List<Item> itemsetting() //배열로 바꾸는게 더 좋을거 같긴한데 손댈게 너무 많음
+            public static List<Item> itemsetting(List<Item> shoplist) //배열로 바꾸는게 더 좋을거 같긴한데 손댈게 너무 많음
             {
-                List<Item> shoplist = new List<Item>();
+                
                 //갑옷
-                Item trainingArmor = new Item();
+                Item trainingArmor = new Item(); //밖에서 자식 클래스로 만들어주고싶은데 어떻게할지 모르겠음. +그렇게 하는거 아닌거같음
                 trainingArmor.name = "수련자 갑옷";
                 trainingArmor.type = "Armor";
                 trainingArmor.jobconfine = "전사";
@@ -133,8 +145,8 @@ namespace homework1
                 shoplist.Add(rifle);
                 return shoplist;
             }
-        }
-        
+        }        
+       
         class Character
         {
             public int level { get; private set; }
@@ -148,7 +160,7 @@ namespace homework1
             public List<int> equipItemCodes = new List<int>();
             public Item equipArmor { get; private set; }
             public Item equipWeapon { get; private set; }
-            public int exp { get; private set; }            
+            public int exp { get; private set; }
 
             public Character()
             {
@@ -159,14 +171,14 @@ namespace homework1
                 exp = 0;
                 level = 1;
                 setName();
-                setJob();                
+                setJob();
             }
 
             public void levelup()
             {
                 level++;
                 attackPower = 10 + ((level - 1) * 0.5f);
-                defensePower = 5+ ((level - 1) * 1);
+                defensePower = 5 + ((level - 1) * 1);
                 exp = 0;
             }
 
@@ -175,7 +187,7 @@ namespace homework1
                 exp++;
             }
 
-            public void setGold(float price) 
+            public void setGold(float price)
             {
                 hasgold += price;
             }
@@ -185,16 +197,18 @@ namespace homework1
                 Console.Write("먼저 이름을 정해주세요.");
                 string nameinput = Console.ReadLine();
                 name = nameinput;
-                
+
             }
+
             public void setHealth(float healthchange)
             {
                 health += healthchange;
                 if (health < 0)
                     health = 0;
-                else if (health >100)
-                    health = 100; 
+                else if (health > 100)
+                    health = 100;
             }
+
             public void setJob()
             {
                 Console.WriteLine("직업을 선택해주세요.");
@@ -209,7 +223,7 @@ namespace homework1
                         switch (jobchoice)
                         {
                             case 1:
-                                job = "전사";                                
+                                job = "전사";
                                 break;
                             case 2:
                                 job = "궁수";
@@ -228,39 +242,81 @@ namespace homework1
                         break;
                 }
             }
+
             public void EquipArmor(Item item)
             {
-                equipArmor = item;                
+                equipArmor = item;
             }
 
             public void resetArmor()
             {
-                equipArmor = null;                
+                equipArmor = null;
             }
 
             public void EquipWeapon(Item item)
             {
-                equipWeapon = item;                
+                equipWeapon = item;
             }
 
             public void resetWeapon()
             {
-                equipWeapon = null;                
+                equipWeapon = null;
             }
 
+            //로드할 때 초기화해주는 부분
+            public void loadLevel(int value)
+            {
+                level = value;
+            }
+            public void loadName(string value)
+            {
+                name = value;
+            }
+            public void loadJob(string value)
+            {
+                job = value;
+            }
+            public void loadAP(float value)
+            {
+                attackPower = value;
+            }
+            public void loadDP(float value)
+            {
+                defensePower = value;
+            }
+            public void loadHealth(float value)
+            {
+                health = value;
+            }
+            public void loadHasgold(float value)
+            {
+                hasgold = value;
+            }
+            public void loadEA(Item value)
+            {
+                equipArmor = value;
+            }
+            public void loadEW(Item value)
+            {
+                equipWeapon = value;
+            }
+            public void loadEXP(int value)
+            {
+                exp = value;
+            }
         }
 
         static void Main(string[] args)
         {
-            
+
             Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
             Console.WriteLine("이곳에서 던전으로 들어가기 전 활동을 할 수 있습니다.");
             Console.WriteLine();
-            Character character = new Character();            
-            Console.WriteLine($"당신의 이름은 {character.name}입니다.");            
+            Character character = new Character();
+            Console.WriteLine($"당신의 이름은 {character.name}입니다.");
             Console.WriteLine($"당신의 직업은 {character.job}입니다.");
             Console.WriteLine();
-
+            //SaveData(character);
             Console.WriteLine("진행하려면 아무 버튼이나 누르세요.");
             Console.ReadLine();
             askDo(character);
@@ -302,7 +358,7 @@ namespace homework1
                                 Console.ReadLine();
                                 askDo(character);
                             }
-                            else   
+                            else
                                 enterDungeon(character);
                             break;
                         case 5:
@@ -329,16 +385,16 @@ namespace homework1
             Console.Clear();
             Console.WriteLine($"레벨 : {character.level}");
             Console.WriteLine($"{character.name} ({character.job})");
-            if (character.equipWeapon ==null) 
+            if (character.equipWeapon == null)
             {
                 Console.WriteLine($"공격력 : {character.attackPower}");
             }
-            else if(character.equipWeapon != null)
-                Console.WriteLine($"공격력 : {character.attackPower+character.equipWeapon.attackPower} (+{character.equipWeapon.attackPower})");
+            else if (character.equipWeapon != null)
+                Console.WriteLine($"공격력 : {character.attackPower + character.equipWeapon.attackPower} (+{character.equipWeapon.attackPower})");
             if (character.equipArmor == null)
                 Console.WriteLine($"방어력 : {character.defensePower}");
             else if (character.equipArmor != null)
-                Console.WriteLine($"방어력 : {character.defensePower+ character.equipArmor.defensePower} (+{character.equipArmor.defensePower})");
+                Console.WriteLine($"방어력 : {character.defensePower + character.equipArmor.defensePower} (+{character.equipArmor.defensePower})");
             Console.WriteLine($"체 력 : {character.health}");
             Console.WriteLine($"소지금 : {character.hasgold}");
             Console.WriteLine();
@@ -356,7 +412,8 @@ namespace homework1
                         case 0:
                             askDo(character);
                             break;
-                        default: Console.WriteLine("올바른 숫자를 입력해주세요.");
+                        default:
+                            Console.WriteLine("올바른 숫자를 입력해주세요.");
                             break;
                     }
                     Console.WriteLine("숫자를 입력해주세요.");
@@ -409,21 +466,23 @@ namespace homework1
             switch (check)
             {
                 case true:
-                    switch(choice)
+                    switch (choice)
                     {
                         case 0:
                             askDo(character);
                             break;
-                            case 1:
+                        case 1:
                             equipManagement(character);
                             break;
-                        default: Console.WriteLine("올바른 숫자를 입력해주세요.");
+                        default:
+                            Console.WriteLine("올바른 숫자를 입력해주세요.");
                             viewInventory(character);
                             break;
 
                     }
                     break;
-                default: Console.WriteLine("숫자를 입력해주세요.");
+                default:
+                    Console.WriteLine("숫자를 입력해주세요.");
                     viewInventory(character);
                     break;
             }
@@ -432,11 +491,11 @@ namespace homework1
         static void equipManagement(Character character)
         {
             Console.Clear();
-            Console.WriteLine("[아이템 목록]");            
+            Console.WriteLine("[아이템 목록]");
             for (int i = 0; i < character.item.Count; i++)
             {
-                if (character.equipWeapon == null && character.item[i].type =="Weapon")
-                {                    
+                if (character.equipWeapon == null && character.item[i].type == "Weapon")
+                {
                     Console.WriteLine($"- {i + 1} {character.item[i].name}     | 공격력 +{character.item[i].attackPower}    | {character.item[i].explain}");
                 }
                 else if (character.equipWeapon != null && character.item[i].type == "Weapon")
@@ -458,11 +517,11 @@ namespace homework1
                     else if (character.equipArmor.itemcode != character.item[i].itemcode)
                         Console.WriteLine($"- {i + 1}  {character.item[i].name}     | 방어력 +{character.item[i].defensePower}    | {character.item[i].explain}");
                 }
-                
-                    
+
+
             }
 
-            Console.WriteLine("원하시는 행동을 입력해주세요.");            
+            Console.WriteLine("원하시는 행동을 입력해주세요.");
             Console.WriteLine("0. 나가기");
             Console.Write(">> ");
             string quit = Console.ReadLine();
@@ -490,7 +549,7 @@ namespace homework1
                         case 12:
                             if (character.item.Count == 0)
                                 equipManagement(character);
-                            if ((choice ) <= character.item.Count && character.item.Count != 0) 
+                            if ((choice) <= character.item.Count && character.item.Count != 0)
                             {
                                 if (character.item[choice - 1].jobconfine == character.job)
                                 {
@@ -519,7 +578,8 @@ namespace homework1
                                     equipManagement(character);
                                 }
                             }
-                            else if (choice > character.item.Count){
+                            else if (choice > character.item.Count)
+                            {
                                 Console.WriteLine("잘못된 입력입니다.");
                                 Console.ReadLine();
                                 equipManagement(character);
@@ -541,11 +601,12 @@ namespace homework1
         }
 
         static void shop(Character character)
-        {            
+        {
             Console.Clear();
-            if(character.item.Count !=0)
+            Item list = new Item();
+            if (character.item.Count != 0)
                 Console.WriteLine($"{character.item[0].name}");
-            List<Item> shoplist = Item.itemsetting();
+            List<Item> shoplist = Item.itemsetting(list.shoplist);
             Console.WriteLine("상점");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine();
@@ -556,7 +617,7 @@ namespace homework1
             for (int i = 0; i < shoplist.Count; i++)
             {
                 List<int> itemcodes = new List<int>();
-                for (int j=0; j <character.item.Count; j++)
+                for (int j = 0; j < character.item.Count; j++)
                 {
                     itemcodes.Add(character.item[j].itemcode);
                 }
@@ -567,7 +628,7 @@ namespace homework1
                 if (shoplist[i].type == "Weapon" && itemcodes.IndexOf(shoplist[i].itemcode) != -1)
                     Console.WriteLine($"- {i + 1} [{shoplist[i].jobconfine}] {shoplist[i].name}     | 공격력 +{shoplist[i].attackPower}    | {shoplist[i].explain}   | 구매 완료");
                 else if (shoplist[i].type == "Weapon" && itemcodes.IndexOf(shoplist[i].itemcode) == -1)
-                    Console.WriteLine($"- {i + 1} [{shoplist[i].jobconfine}] {shoplist[i].name}     | 공격력 +{shoplist[i].attackPower}    | {shoplist[i].explain}   | {shoplist[i].price}G");                
+                    Console.WriteLine($"- {i + 1} [{shoplist[i].jobconfine}] {shoplist[i].name}     | 공격력 +{shoplist[i].attackPower}    | {shoplist[i].explain}   | {shoplist[i].price}G");
             }
 
             Console.WriteLine();
@@ -594,10 +655,15 @@ namespace homework1
                         case 2:
                             sellItem(character);
                             break;
-                        default: Console.WriteLine("올바른 숫자를 입력해주세요.");
+                        default:
+                            Console.WriteLine("올바른 숫자를 입력해주세요.");
                             shop(character);
                             break;
                     }
+                    break;
+                default:
+                    Console.WriteLine("잘못된 입력입니다.");
+                    shop(character);
                     break;
             }
         }
@@ -605,7 +671,8 @@ namespace homework1
         static void buyItem(Character character)
         {
             Console.Clear();
-            List<Item> shoplist = Item.itemsetting();
+            Item list = new Item();
+            List<Item> shoplist = Item.itemsetting(list.shoplist);
             Console.WriteLine("상점");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine("직업에 맞는 장비만 구입할 수 있습니다.");
@@ -620,7 +687,7 @@ namespace homework1
                 itemcodes.Add(character.item[j].itemcode);
             }
             for (int i = 0; i < shoplist.Count; i++)
-            {                
+            {
                 if (shoplist[i].type == "Armor" && itemcodes.IndexOf(shoplist[i].itemcode) != -1)
                     Console.WriteLine($"- {i + 1} [{shoplist[i].jobconfine}] {shoplist[i].name}     | 방어력 +{shoplist[i].defensePower}    | {shoplist[i].explain}   | 구매 완료");
                 else if (shoplist[i].type == "Armor" && itemcodes.IndexOf(shoplist[i].itemcode) == -1)
@@ -638,7 +705,7 @@ namespace homework1
             string input = Console.ReadLine();
             int choice = 0;
             bool check = int.TryParse(input, out choice);
-            switch(check) 
+            switch (check)
             {
                 case true:
                     switch (choice)
@@ -646,7 +713,7 @@ namespace homework1
                         case 0:
                             Console.WriteLine("가게로 돌아갑니다.");
                             Console.ReadLine();
-                            shop(character);                            
+                            shop(character);
                             break;
                         case 1:
                         case 2:
@@ -689,10 +756,13 @@ namespace homework1
                             break;
                         default:
                             Console.WriteLine("올바른 숫자를 입력해주세요.");
+                            buyItem(character);
                             break;
                     }
                     break;
-                default: Console.WriteLine("숫자를 입력해주세요.");
+                default:
+                    Console.WriteLine("숫자를 입력해주세요.");
+                    buyItem(character);
                     break;
 
             }
@@ -708,20 +778,20 @@ namespace homework1
             Console.WriteLine($"{character.hasgold} G");
             Console.WriteLine();
             Console.WriteLine("[아이템 목록]");
-            for (int i =0; i < character.item.Count; i++)
+            for (int i = 0; i < character.item.Count; i++)
             {
                 if (character.item[i].type == "Weapon" && character.item[i] != character.equipWeapon)
-                    Console.WriteLine($"- {i + 1} {character.item[i].name}    | 공격력 +{character.item[i].attackPower}    | {character.item[i].explain}    | {(int)(character.item[i].price*85/100)}G");
+                    Console.WriteLine($"- {i + 1} {character.item[i].name}    | 공격력 +{character.item[i].attackPower}    | {character.item[i].explain}    | {(int)(character.item[i].price * 85 / 100)}G");
                 else if ((character.item[i].type == "Weapon" && character.item[i] == character.equipWeapon))
                     Console.WriteLine($"- {i + 1} [E] {character.item[i].name}    | 공격력 +{character.item[i].attackPower}    | {character.item[i].explain}    | {(int)(character.item[i].price * 85 / 100)}G");
                 else if (character.item[i].type == "Armor" && character.item[i] != character.equipArmor)
-                    Console.WriteLine($"- {i + 1} {character.item[i].name}    | 방어력 +{character.item[i].defensePower}    | {character.item[i].explain}    | {(int)(character.item[i].price*85/100)}G");
+                    Console.WriteLine($"- {i + 1} {character.item[i].name}    | 방어력 +{character.item[i].defensePower}    | {character.item[i].explain}    | {(int)(character.item[i].price * 85 / 100)}G");
                 else if (character.item[i].type == "Armor" && character.item[i] == character.equipArmor)
                     Console.WriteLine($"- {i + 1} [E] {character.item[i].name}    | 방어력 +{character.item[i].defensePower}    | {character.item[i].explain}    | {(int)(character.item[i].price * 85 / 100)}G");
 
             }
 
-            Console.WriteLine() ;
+            Console.WriteLine();
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
             Console.WriteLine("원하시는 행동을 입력해주세요.");
@@ -740,7 +810,7 @@ namespace homework1
                         case int:
                             if (sell <= character.item.Count)
                             {
-                                character.setGold(character.item[sell - 1].price*85/100);
+                                character.setGold(character.item[sell - 1].price * 85 / 100);
                                 if (character.equipWeapon == character.item[sell - 1])
                                     character.resetWeapon();
                                 else if (character.equipArmor == character.item[sell - 1])
@@ -783,14 +853,14 @@ namespace homework1
             int dungeon = 0;
             bool check = int.TryParse(input, out dungeon);
             float defense;
-            int needDefense =0;
+            int needDefense = 0;
             float offense;
             Random random = new Random();
             string[] proba = new string[100];
             for (int i = 0; i < 60; i++)
                 proba[i] = "win";
             for (int i = 60; i < 100; i++)
-                proba[i] = "lose";                
+                proba[i] = "lose";
             Console.ReadLine();
             proba.OrderBy(x => random.Next()).ToArray();
 
@@ -805,14 +875,14 @@ namespace homework1
             switch (check)
             {
                 case true:
-                    
+
                     switch (dungeon)
-                    {                        
+                    {
                         case 0:
                             askDo(character);
                             break;
                         case 1:
-                            needDefense = 5;                           
+                            needDefense = 5;
                             break;
                         case 2:
                             needDefense = 11;
@@ -836,7 +906,7 @@ namespace homework1
                 if (proba[random.Next(0, 100)] == "win")
                 {
                     character.expup();
-                    dungeonClear(character, dungeon, defense, offense, healthchange);                    
+                    dungeonClear(character, dungeon, defense, offense, healthchange);
                 }
                 else
                     dungeonFail(character, healthchange);
@@ -851,26 +921,26 @@ namespace homework1
 
         }
 
-        static void dungeonClear(Character character,int diff,float defense,float addgold, float healthchange)
+        static void dungeonClear(Character character, int diff, float defense, float addgold, float healthchange)
         {
             Console.Clear();
             Console.WriteLine("던전 클리어");
             Console.WriteLine("축하합니다!!");
-            string Diff = "";            
+            string Diff = "";
             int defaultGold = 0;
-            float finalHealth = character.health-healthchange;
-            switch (diff) 
+            float finalHealth = character.health - healthchange;
+            switch (diff)
             {
                 case 1:
-                    Diff = "쉬운";                    
+                    Diff = "쉬운";
                     defaultGold = 1000;
                     break;
                 case 2:
-                    Diff = "일반";                    
+                    Diff = "일반";
                     defaultGold = 1700;
                     break;
                 case 3:
-                    Diff = "어려운";                    
+                    Diff = "어려운";
                     defaultGold = 2500;
                     break;
             }
@@ -880,7 +950,7 @@ namespace homework1
             if (finalHealth < 0)
                 finalHealth = 0;
             Console.WriteLine($"체력 {character.health} -> {finalHealth}");
-            Console.WriteLine($"Gold {character.hasgold} -> {character.hasgold+defaultGold+(int)(defaultGold*addgold/100)}");
+            Console.WriteLine($"Gold {character.hasgold} -> {character.hasgold + defaultGold + (int)(defaultGold * addgold / 100)}");
             switch (character.level)
             {
                 case 1:
@@ -911,7 +981,7 @@ namespace homework1
                         character.levelup();
                     }
                     break;
-                    
+
             }
             Console.WriteLine();
             Console.WriteLine("0. 나가기");
@@ -928,7 +998,7 @@ namespace homework1
                     {
                         case 0:
                             character.setHealth(-healthchange);
-                            character.setGold(defaultGold + (int)(defaultGold * addgold/100));
+                            character.setGold(defaultGold + (int)(defaultGold * addgold / 100));
                             askDo(character);
                             break;
                         default:
@@ -946,9 +1016,9 @@ namespace homework1
             }
         }
 
-        static void dungeonFail(Character character,float healthchange)
+        static void dungeonFail(Character character, float healthchange)
         {
-            Console.Clear();            
+            Console.Clear();
             Console.WriteLine("던전 실패");
             Console.WriteLine("아쉽게도 던전 공략을 실패하셨습니다.");
             Console.WriteLine();
@@ -971,7 +1041,7 @@ namespace homework1
                     switch (todo)
                     {
                         case 0:
-                            character.setHealth(-(healthchange/2));
+                            character.setHealth(-(healthchange / 2));
                             askDo(character);
                             break;
                         default:
@@ -997,7 +1067,8 @@ namespace homework1
             Console.WriteLine($"500 G 를 내면 체력을 회복할 수 있습니다. (보유 골드 : {character.hasgold} G");
             Console.WriteLine($"현재 체력 : {character.health}");
             Console.WriteLine();
-            Console.WriteLine("1. 휴식하기");
+            Console.WriteLine("1. 휴식하기 & 저장하기");
+            Console.WriteLine("2. 불러오기");
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
             Console.WriteLine("원하시는 행동을 입력해주세요.");
@@ -1013,12 +1084,16 @@ namespace homework1
                         case 0:
                             askDo(character);
                             break;
-                        case 1:
+                        case 1:                            
                             character.setGold(-500);
                             character.setHealth(100);
+                            SaveData(character);
                             Console.WriteLine("체력이 완전히 회복되었습니다. ");
                             Console.ReadLine();
                             getRest(character);
+                            break;
+                        case 2:
+                            LoadData(character);
                             break;
                     }
                     break;
@@ -1026,6 +1101,87 @@ namespace homework1
                     getRest(character);
                     break;
             }
+        }
+
+        static void SaveData(Character character)
+        {
+            string path = @"C:\LocalSave\save.txt";            
+            int length = character.item.Count;
+            string[] itembox = new string[length];
+
+           
+            JObject configData = new JObject(
+                new JProperty("Level", $"{character.level}"),
+                new JProperty("Name", $"{character.name}"),
+                new JProperty("Job", $"{character.job}"),
+                new JProperty("AttackPower", character.attackPower),
+                new JProperty("DefensePower", character.defensePower),
+                new JProperty("Health", character.health),
+                new JProperty("Hasgold", character.hasgold),                
+                //new JProperty("EquipArmor", character.equipArmor.itemcode),  //여기서 오류남
+                //new JProperty("EquipWeapon", character.equipWeapon.itemcode),
+                new JProperty("Exp", character.exp),
+                new JProperty("Length", length)
+                );
+            for (int i = 0; i < length; i++)
+            {
+                itembox[i] = $"Item{i}";
+                configData.Add(itembox[i], character.item[i].itemcode);
+            }
+            if (character.equipArmor != null)
+                configData.Add("equipArmor", character.equipArmor.itemcode);
+            if (character.equipWeapon != null)
+                configData.Add("equipWeapon", character.equipWeapon.itemcode);
+
+
+            File.WriteAllText(path, configData.ToString());
+        }
+
+        static void LoadData(Character character)
+        {            
+            string path = @"C:\LocalSave\save.txt";
+            using (StreamReader file = File.OpenText(path))
+            {
+                using (JsonTextReader reader = new JsonTextReader(file))
+                {
+                    Item list = new Item();                    
+                    List<Item> shoplist = Item.itemsetting(list.shoplist);                    
+                    JObject json = (JObject)JToken.ReadFrom(reader);
+                    character.loadLevel((int)json["Level"]);
+                    character.loadName(json["Name"].ToString());
+                    character.loadJob(json["Job"].ToString());
+                    character.loadAP((float)json["AttackPower"]);
+                    character.loadDP((float)json["DefensePower"]);
+                    character.loadHealth((float)json["Health"]);
+                    character.loadHasgold((float)json["Hasgold"]);
+                    int length = (int)json["Length"];
+                    int[] itemlist = new int[length];
+                    List<Item> realitem = new List<Item>();
+                    for (int i =0; i < length; i++)
+                    {                        
+                        itemlist[i] = (int)json[$"Item{i}"];
+                        for (int j=0; j< list.shoplist.Count; j++)
+                        {
+                            if (itemlist[i] == list.shoplist[j].itemcode)
+                            {
+                                realitem.Add(list.shoplist[j]);
+                            }
+                        }                        
+                    }
+                    character.item = realitem;                    
+                    for (int i =0; i < realitem.Count; i++)
+                    {
+                        if (character.item[i].itemcode == (int)json["equipArmor"])
+                            character.loadEA(character.item[i]);
+                        else if (character.item[i].itemcode == ((int)json["equipWeapon"]))
+                            character.loadEW(character.item[i]);
+                    }                                        
+                    character.loadEXP((int)json["Exp"]);                    
+                }
+            }
+            Console.WriteLine("불러오기에 성공했습니다.");
+            Console.ReadLine();
+            getRest(character);            
         }
     }
 }

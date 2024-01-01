@@ -13,3 +13,6 @@ F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\refint\homework1.dll
 F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.pdb
 F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.genruntimeconfig.cache
 F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\ref\homework1.dll
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.csproj.AssemblyReference.cache
+F:\Sparta\Github\Bak-s\homework1\homework1\bin\Debug\net8.0\Newtonsoft.Json.dll
+F:\Sparta\Github\Bak-s\homework1\homework1\obj\Debug\net8.0\homework1.csproj.CopyComplete
