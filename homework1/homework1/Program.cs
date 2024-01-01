@@ -167,7 +167,7 @@ namespace homework1
                 attackPower = 10;
                 defensePower = 5;
                 health = 100;
-                hasgold = 15000;
+                hasgold = 1500;
                 exp = 0;
                 level = 1;
                 setName();
