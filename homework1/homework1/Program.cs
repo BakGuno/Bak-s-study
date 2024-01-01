@@ -860,8 +860,7 @@ namespace homework1
             for (int i = 0; i < 60; i++)
                 proba[i] = "win";
             for (int i = 60; i < 100; i++)
-                proba[i] = "lose";
-            Console.ReadLine();
+                proba[i] = "lose";            
             proba.OrderBy(x => random.Next()).ToArray();
 
             if (character.equipArmor != null)
