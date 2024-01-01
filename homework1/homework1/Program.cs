@@ -1105,7 +1105,7 @@ namespace homework1
 
         static void SaveData(Character character)
         {
-            string path = @"C:\LocalSave\save.txt";            
+            string path = @"F:\Sparta\Github\Bak-s\homework1\LocalSave\save.txt";            
             int length = character.item.Count;
             string[] itembox = new string[length];
 
@@ -1139,7 +1139,7 @@ namespace homework1
 
         static void LoadData(Character character)
         {            
-            string path = @"C:\LocalSave\save.txt";
+            string path = @"F:\Sparta\Github\Bak-s\homework1\LocalSave\save.txt";
             using (StreamReader file = File.OpenText(path))
             {
                 using (JsonTextReader reader = new JsonTextReader(file))
