@@ -1,0 +1,15 @@
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\bin\Debug\net8.0\snakeGame.exe
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\bin\Debug\net8.0\snakeGame.deps.json
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\bin\Debug\net8.0\snakeGame.runtimeconfig.json
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\bin\Debug\net8.0\snakeGame.dll
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\bin\Debug\net8.0\snakeGame.pdb
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.GeneratedMSBuildEditorConfig.editorconfig
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.AssemblyInfoInputs.cache
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.AssemblyInfo.cs
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.csproj.CoreCompileInputs.cache
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.sourcelink.json
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.dll
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\refint\snakeGame.dll
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.pdb
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\snakeGame.genruntimeconfig.cache
+F:\Sparta\Github\Bak-s\snakeGame\snakeGame\obj\Debug\net8.0\ref\snakeGame.dll
