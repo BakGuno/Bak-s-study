@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Sparta\\Github\\Bak-s\\homework1\\homework1\\homework1.csproj",
-      "projectName": "homework1",
-      "projectPath": "F:\\Sparta\\Github\\Bak-s\\homework1\\homework1\\homework1.csproj",
+      "projectUniqueName": "F:\\Sparta\\Github\\Bak-s\\Week5\\Week5\\Week5.csproj",
+      "projectName": "Week5",
+      "projectPath": "F:\\Sparta\\Github\\Bak-s\\Week5\\Week5\\Week5.csproj",
       "packagesPath": "C:\\Users\\BakGeonO\\.nuget\\packages\\",
-      "outputPath": "F:\\Sparta\\Github\\Bak-s\\homework1\\homework1\\obj\\",
+      "outputPath": "F:\\Sparta\\Github\\Bak-s\\Week5\\Week5\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BakGeonO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,11 +51,17 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
