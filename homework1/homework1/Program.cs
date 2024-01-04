@@ -1128,10 +1128,19 @@ namespace homework1
                 configData.Add(itembox[i], character.item[i].itemcode);
             }
             if (character.equipArmor != null)
+            {
                 configData.Add("equipArmor", character.equipArmor.itemcode);
+                configData.Add("isequipArmor?", 1);
+            }
+            else if (character.equipArmor == null)
+                configData.Add("isequipArmor?", 0);
             if (character.equipWeapon != null)
+            {
                 configData.Add("equipWeapon", character.equipWeapon.itemcode);
-
+                configData.Add("isequipWeapon?", 1);
+            }
+            else if (character.equipWeapon == null)
+                configData.Add("isequipWeapon?", 0);
 
             File.WriteAllText(path, configData.ToString());
         }
@@ -1170,10 +1179,17 @@ namespace homework1
                     character.item = realitem;                    
                     for (int i =0; i < realitem.Count; i++)
                     {
-                        if (character.item[i].itemcode == (int)json["equipArmor"])
-                            character.loadEA(character.item[i]);
-                        else if (character.item[i].itemcode == ((int)json["equipWeapon"]))
-                            character.loadEW(character.item[i]);
+                        if ((int)json["isequipArmor?"]  == 1)
+                        {
+                            if ((character.item[i].itemcode == (int)json["equipArmor"]))
+                                character.loadEA(character.item[i]);
+                        }                            
+
+                        if ((int)json["isequipWeapon?"]  == 1)
+                        {
+                            if ((character.item[i].itemcode == (int)json["equipWeapon"]))
+                                character.loadEW(character.item[i]);
+                        }                            
                     }                                        
                     character.loadEXP((int)json["Exp"]);                    
                 }

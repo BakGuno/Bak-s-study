@@ -1,11 +1,14 @@
 {
-  "Level": "1",
-  "Name": "rtan",
+  "Level": "2",
+  "Name": "park",
   "Job": "전사",
-  "AttackPower": 10.0,
-  "DefensePower": 5.0,
+  "AttackPower": 10.5,
+  "DefensePower": 6.0,
   "Health": 100.0,
-  "Hasgold": 1000.0,
+  "Hasgold": 750.0,
   "Exp": 0,
-  "Length": 0
+  "Length": 2,
+  "Item0": 1001,
+  "Item1": 1003,
+  "equipArmor": 1003
 }
