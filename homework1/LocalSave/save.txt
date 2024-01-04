@@ -1,14 +1,17 @@
 {
   "Level": "2",
-  "Name": "park",
+  "Name": "asd",
   "Job": "전사",
   "AttackPower": 10.5,
   "DefensePower": 6.0,
   "Health": 100.0,
-  "Hasgold": 750.0,
-  "Exp": 0,
-  "Length": 2,
+  "Hasgold": 2412.0,
+  "Exp": 1,
+  "Length": 3,
   "Item0": 1001,
   "Item1": 1003,
-  "equipArmor": 1003
+  "Item2": 2001,
+  "equipArmor": 1001,
+  "isequipArmor?": "yes",
+  "isequipWeapon?": "no"
 }
