@@ -43,6 +43,15 @@
 //            string Changeinput = Console.ReadLine();
 //            int change = int.Parse(Changeinput);
 
+//            for (int i = 0; i < row; i++)
+//            {
+//                for (int j = 0; j < Col; j++)
+//                {
+//                   Console.Write($"[{visited[i, j]}]");
+//                }
+//                Console.WriteLine();
+//            }
+
 //            Find(grid, startx, starty, visited, change);
 
 //            for (int i = 0; i < row; i++)  //완성된 배열 출력
