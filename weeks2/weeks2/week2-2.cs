@@ -11,8 +11,8 @@ namespace weeks2
         static void Main(string[] args)
         {
             int[] x = [1, 4, 7];
-            int[] y = [2, 8, 14];            
-            int k = 1;            
+            int[] y = [2, 8, 14];
+            int k = 1;
             string[,] map = new string[9, 17];
 
             //맵 만드는 반복문
@@ -34,7 +34,7 @@ namespace weeks2
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    map[x[i], y[j]] = k.ToString();                    
+                    map[x[i], y[j]] = k.ToString();
                     k++;
                 }
                 Console.WriteLine();
@@ -168,18 +168,18 @@ namespace weeks2
                         Console.WriteLine("1P의 승리입니다.");
                         ok = true;
                     }
-                    else if (count % 2 == 0) 
+                    else if (count % 2 == 0)
                     {
                         Console.WriteLine("2P의 승리입니다.");
                         ok = true;
                     }
                 }
-                else if (count >8) //9칸이니까 턴이 9턴이 넘어가면 둘 곳이 없어짐.
+                else if (count > 8) //9칸이니까 턴이 9턴이 넘어가면 둘 곳이 없어짐.
                 {
                     Console.WriteLine("더 이상 둘 곳이 없습니다.");
                     ok = true;
-                }                    
+                }
             }
-        }             
-    }    
+        }
+    }
 }
