@@ -790,8 +790,10 @@ namespace homework1
         static void dungeonClear(DungeonDiff diff, float defense, float addgold, float healthchange)
         {
             Console.Clear();
+            Console.WriteLine("■■■■■■■■");
             Console.WriteLine("던전 클리어");
             Console.WriteLine("축하합니다!!");
+            Console.WriteLine("■■■■■■■■");
             string Diff = "";
             int defaultGold = 0;
             float finalHealth = _player.health - healthchange;
@@ -895,7 +897,10 @@ namespace homework1
         static void getRest()
         {
             Console.Clear();
-            Console.WriteLine("휴식하기");
+            Console.WriteLine("■■■■■■■■");
+            ShowHighlithtesText("여관");
+            Console.WriteLine("■■■■■■■■");
+            Console.WriteLine();
             Console.WriteLine($"500 G 를 내면 체력을 회복할 수 있습니다. (보유 골드 : {_player.hasgold} G");
             Console.WriteLine($"현재 체력 : {_player.health}");
             Console.WriteLine();
